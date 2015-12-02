@@ -1,0 +1,97 @@
+<head>
+    <title>PostIL Tracker</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+
+<template name="package">
+    <tr>
+        <td>{{id}}</td>
+        <td>{{description}}</td>
+        <td style="direction: rtl">{{tracking}}</td>
+        <td>
+            <a class="btn_delete  waves-effect waves-light btn"><i class="material-icons">delete</i></a>
+        </td>
+    </tr>
+</template>
+
+<template name="packages">
+    {{#if packages.count}}
+        <table class="bordered striped responsive">
+            <thead>
+            <tr>
+                <th data-field="id">ID</th>
+                <th data-field="description">Description</th>
+                <th data-field="status">Tracking Status</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {{#each packages}}
+                {{> package}}
+            {{/each}}
+            </tbody>
+        </table>
+    {{else}}
+        <div class="row"><h3 class="center">No packages! Add some with + button.</h3></div>
+    {{/if}}
+</template>
+
+<body>
+
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">PostIL Tracker</a>
+        <ul class="right">
+            <li>{{> loginButtons}}
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="section no-pad-bot hide-on-med-and-down" id="index-banner">
+    <div class="container">
+        <br><br>
+        <h3 class="header center orange-text">Packages</h3>
+    </div>
+</div>
+
+<div id="modal1" class="modal bottom-sheet" style="max-height: 100%;">
+    <div class="modal-content" >
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="package_id" type="text" class="validate" required>
+                        <label for="package_id">Package ID</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="package_descr" type="text" class="validate" required>
+                        <label for="package_descr">Description</label>
+                    </div>
+                </div>
+            </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn_save btn waves-effect waves-green btn-flat">Add</button>
+    </div>
+</div>
+
+{{#if currentUser}}
+    <div class="fixed-action-btn" style="bottom: 15px; right: 15px;">
+        <a class="btn_add btn-floating btn-large red modal-trigger btn">
+            <i class="material-icons">add</i>
+        </a>
+    </div>
+{{/if}}
+
+<div class="container">
+    <div class="section">
+        {{#if currentUser}}
+            {{> packages}}
+        {{else}}
+            <h3 class="center">You need to be logged in to add packages</h3>
+        {{/if}}
+
+
+    </div>
+</div>
+
+</body>
