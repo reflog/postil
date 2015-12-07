@@ -1,6 +1,6 @@
 {
   "name": "PostIL Tracker 2",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "manifest_version": 2,
   "description": "Track packages with PostIL",
   "homepage_url": "http://postil.com",
@@ -15,6 +15,6 @@
     "default_popup": "src/browser_action/browser_action.html"
   },
   "permissions": [
-    "http://postil.meteor.com/*"
+    "http://postil.herokuapp.com/*"
   ]
 }
