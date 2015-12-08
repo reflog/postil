@@ -24,3 +24,4 @@ accounts-google
 http
 materialize:materialize
 simple:reactive-method
+force-ssl
